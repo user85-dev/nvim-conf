@@ -32,7 +32,7 @@ return {
           config = {
             omnisharp = {
               cmd = {
-                "/home/u85/.local/share/nvim/mason/bin/OmniSharp",
+                "/root/.local/share/nvim/mason/bin/OmniSharp",
                 "--languageserver",
                 "--hostPID",
                 tostring(vim.fn.getpid()),

@@ -16,7 +16,6 @@ return {
   { import = "astrocommunity.git.blame-nvim" },
 
   -- Completion
-  { import = "astrocommunity.completion.copilot-lua-cmp" },
 
   -- Icons
   { import = "astrocommunity/icon/mini-icons" },

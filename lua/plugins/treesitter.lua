@@ -10,6 +10,7 @@ return {
       "gitattributes",
       "gitcommit",
       "gitignore",
+      "pug",
     })
     opts.indent = {
       enable = true,
