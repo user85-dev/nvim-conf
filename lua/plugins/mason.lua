@@ -17,7 +17,6 @@ return {
           "sass",
           "scss",
           "svelte",
-          "pug",
           "typescriptreact",
           "vue",
         },
