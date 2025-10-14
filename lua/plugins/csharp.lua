@@ -32,7 +32,8 @@ return {
           config = {
             omnisharp = {
               cmd = {
-                "/root/.local/share/nvim/mason/bin/OmniSharp",
+                os.getenv "SSH_TTY" and "/root/.local/share/nvim/mason/bin/OmniSharp"
+                  or "/home/u85/.local/share/nvim/mason/bin/OmniSharp",
                 "--languageserver",
                 "--hostPID",
                 tostring(vim.fn.getpid()),
