@@ -36,17 +36,10 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     optional = true,
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "pug-lsp" })
+      opts.ensure_installed =
+        require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "pug-lsp", "prettier" })
       local lspconfig = require "lspconfig"
       lspconfig.pug.setup {}
-    end,
-  },
-
-  {
-    "jay-babu/mason-null-ls.nvim",
-    optional = true,
-    opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "prettier" })
     end,
   },
 
@@ -55,10 +48,6 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       require("conform").setup {
-        format_on_save = {
-          timeout_ms = 1000,
-          lsp_format = "fallback",
-        },
         formatters_by_ft = {
           pug = { "prettier" },
         },
@@ -67,7 +56,7 @@ return {
   },
 
   {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    "jay-babu/mason-null-ls.nvim",
     optional = true,
     opts = function(_, opts)
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "prettier" })
