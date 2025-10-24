@@ -57,15 +57,17 @@ return {
       if not opts.formatters_by_ft then opts.formatters_by_ft = {} end
       opts.formatters_by_ft["pug"] = { "prettierd" }
 
-      local function ensure_pug_plugin()
-        local has_plugin = vim.fn.system "npm list -g prettier-plugin-pug" or ""
-        if not has_plugin:match "prettier%-plugin%-pug" then
-          vim.notify("Installing prettier-plugin-pug globally...", vim.log.levels.INFO)
-          vim.fn.system "npm install -g prettier prettier-plugin-pug"
-        end
-      end
+      if not opts.formatters then opts.formatters = {} end
+      opts.formatters.prettierd = {
+        lsp_format = "never", -- disable LSP formatting for this formatter
+      }
 
-      vim.schedule(ensure_pug_plugin)
+      opts.format_on_save = opts.format_on_save or {}
+      opts.format_on_save = vim.tbl_extend("force", opts.format_on_save, {
+        timeout_ms = 500,
+        lsp_format = "fallback",
+        pattern = "*.pug",
+      })
     end,
   },
 
