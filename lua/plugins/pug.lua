@@ -46,28 +46,23 @@ return {
     "jay-babu/mason-null-ls.nvim",
     optional = true,
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "prettierd" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "prettier" })
     end,
   },
 
   {
     "stevearc/conform.nvim",
-    optional = true,
-    opts = function(_, opts)
-      if not opts.formatters_by_ft then opts.formatters_by_ft = {} end
-      opts.formatters_by_ft["pug"] = { "prettierd" }
-
-      if not opts.formatters then opts.formatters = {} end
-      opts.formatters.prettierd = {
-        lsp_format = "never", -- disable LSP formatting for this formatter
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("conform").setup {
+        format_on_save = {
+          timeout_ms = 1000,
+          lsp_format = "fallback",
+        },
+        formatters_by_ft = {
+          pug = { "prettier" },
+        },
       }
-
-      opts.format_on_save = opts.format_on_save or {}
-      opts.format_on_save = vim.tbl_extend("force", opts.format_on_save, {
-        timeout_ms = 500,
-        lsp_format = "fallback",
-        pattern = "*.pug",
-      })
     end,
   },
 
@@ -75,7 +70,7 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     optional = true,
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "prettierd" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "prettier" })
     end,
   },
 }
