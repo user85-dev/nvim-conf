@@ -38,4 +38,5 @@ return {
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.cs-omnisharp" },
+  { import = "astrocommunity.pack.svelte" },
 }
