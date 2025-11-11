@@ -42,7 +42,7 @@ local spec = {
 
 -- Conditionally add packs only if *not* in SSH
 if not os.getenv "SSH_TTY" then
-  local local_packs = { "svelte", "php", "go", "bash" }
+  local local_packs = { "svelte", "php", "go", "bash", "sql" }
   for _, pack in ipairs(local_packs) do
     table.insert(spec, { import = "astrocommunity.pack." .. pack })
   end
