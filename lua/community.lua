@@ -26,6 +26,7 @@ local spec = {
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.terminal-integration.vim-tmux-navigator" },
   { import = "astrocommunity.file-explorer.telescope-file-browser-nvim" },
+  { import = "astrocommunity.programming-language-support.csv-vim" },
 
   -- Motions
   { import = "astrocommunity.motion.flit-nvim" },
